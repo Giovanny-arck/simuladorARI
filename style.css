@@ -117,9 +117,20 @@ th {
     }
 }
 
-/* Margem APENAS para mobile (até 768px) */
+/* Ajuste ESPECÍFICO para mobile */
 @media (max-width: 768px) {
     .image-container {
-        margin: 15px auto; /* Margem mais generosa para mobile */
+        padding: 0 20px; /* Margem lateral generosa */
+        box-sizing: border-box; /* Garante que o padding não some à largura */
+    }
+    
+    .form-responsive-image {
+        border-radius: 12px; /* Borda suave */
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Sutil profundidade */
+    }
+    
+    /* Ajuste para o container principal */
+    .container {
+        padding: 0 20px; /* Mesma margem lateral */
     }
 }
