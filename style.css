@@ -110,17 +110,16 @@ th {
     object-position: center top; /* Foco no topo da imagem */
 }
 
-/* Media Queries ajustadas */
-@media (max-width: 1000px) {
-    .form-responsive-image {
-        min-height: 160px;
-        max-height: 320px;
+/* Margem APENAS para tablet (769px a 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .image-container {
+        margin: 12px auto; /* Margem equilibrada para tablet */
     }
 }
 
+/* Margem APENAS para mobile (até 768px) */
 @media (max-width: 768px) {
-    .form-responsive-image {
-        min-height: 140px;
-        max-height: 200px;
+    .image-container {
+        margin: 15px auto; /* Margem mais generosa para mobile */
     }
 }
