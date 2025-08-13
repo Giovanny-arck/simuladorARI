@@ -1,0 +1,126 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f9fb;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    margin: 0 auto; 
+    max-width: 1000px; 
+    width: 100%;
+    padding: 0;
+    margin-top: 0;
+    padding-top: 0;
+}
+.form-section {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background: #fafafa;
+}
+.form-section h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #400140;
+    font-size: 1.2em;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+label {
+    font-weight: bold;
+    display: block;
+    font-size: 0.9em;
+    margin-bottom: 4px;
+}
+input, select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.95em;
+}
+input
+{
+    max-width: 200px;
+}
+button {
+    background: #400140;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+}
+button:hover {
+    background: #2d002d;
+}
+.btn-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+table, th, td {
+    border: 1px solid #ccc;
+}
+th, td {
+    padding: 8px;
+    text-align: center;
+}
+th {
+    background: #f0f0f0;
+}
+.destaque {
+    background-color: #400140 !important;
+    color: white !important;
+    font-weight: bold;
+}
+.hidden-col {
+    display: none;
+}
+/* Container da imagem - VERSÃO OTIMIZADA */
+.image-container {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+/* Imagem com tamanho equilibrado */
+.form-responsive-image {
+    width: 100%;
+    height: auto;
+    min-height: 180px; /* Altura mínima garantida */
+    max-height: 250px; /* Altura máxima */
+    display: block;
+    object-fit: contain;
+    margin: 0 auto;
+    object-position: center top; /* Foco no topo da imagem */
+}
+
+/* Media Queries ajustadas */
+@media (max-width: 1000px) {
+    .form-responsive-image {
+        min-height: 160px;
+        max-height: 320px;
+    }
+}
+
+@media (max-width: 768px) {
+    .form-responsive-image {
+        min-height: 140px;
+        max-height: 200px;
+    }
+}
