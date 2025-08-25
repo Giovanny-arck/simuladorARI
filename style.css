@@ -1,0 +1,253 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f9fb;
+    color: #333;
+    margin: 0;
+    padding: 15px;
+    box-sizing: border-box;
+}
+.container {
+    margin: 0 auto; 
+    max-width: 1000px; 
+    width: 100%;
+    padding: 0;
+    margin-top: 0;
+    padding-top: 0;
+}
+.form-section {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background: #fafafa;
+    box-sizing: border-box;
+}
+.form-section h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #400140;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+}
+.obrigatorio {
+    color: red;
+    margin-left: 4px;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+.grid-cliente {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.grid-investimento {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+label {
+    font-weight: bold;
+    display: block;
+    font-size: 0.9em;
+    margin-bottom: 4px;
+}
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.95em;
+    box-sizing: border-box;
+}
+input {
+    max-width: 100%;
+}
+button {
+    background: #400140;
+    color: white;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s;
+}
+button:hover {
+    background: #2d002d;
+}
+button:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+}
+.btn-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+table, th, td {
+    border: 1px solid #ccc;
+}
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+th {
+    background: #f0f0f0;
+}
+.tabela-faixas th {
+    background: #400140;
+    color: white;
+}
+.destaque {
+    background-color: #400140 !important;
+    color: white !important;
+    font-weight: bold;
+}
+.hidden-col {
+    display: none;
+}
+/* Container da imagem - VERSÃO OTIMIZADA */
+.image-container {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto 20px;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+/* Imagem com tamanho equilibrado */
+.form-responsive-image {
+    width: 100%;
+    height: auto;
+    min-height: 180px;
+    max-height: 250px;
+    display: block;
+    object-fit: contain;
+    margin: 0 auto;
+    object-position: center top;
+}
+
+/* Button Groups */
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.recebimento-btn, .prazo-btn {
+    flex: 1;
+    min-width: 150px;
+    background: #e0e0e0;
+    color: #333;
+}
+
+.recebimento-btn.selected, .prazo-btn.selected {
+    background: #400140;
+    color: white;
+}
+
+/* Mensagens de erro */
+.mensagem-erro {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 5px;
+    display: none;
+}
+
+/* Estilos para o botão próximo */
+#btn-proximo {
+    transition: all 0.3s ease;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#btn-proximo:not(:disabled) {
+    opacity: 1;
+    cursor: pointer;
+}
+
+/* Estilos para validação visual */
+input:valid {
+    border-color: #4CAF50 !important;
+}
+
+input:invalid {
+    border-color: #ccc;
+}
+
+/* Ajustes para mobile */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .grid, .grid-cliente {
+        grid-template-columns: 1fr;
+    }
+    
+    .grid-investimento {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
+    
+    .recebimento-btn, .prazo-btn {
+        width: 100%;
+    }
+    
+    .form-section {
+        padding: 10px;
+    }
+    
+    .image-container {
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+    
+    .form-responsive-image {
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .container {
+        padding: 0 10px;
+    }
+    
+    table {
+        font-size: 0.8em;
+    }
+    
+    th, td {
+        padding: 8px 5px;
+    }
+    
+    .valor-investido-container, .forma-recebimento-container {
+        width: 100%;
+    }
+}
+
+/* Margem APENAS para tablet (769px a 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .image-container {
+        margin: 12px auto;
+    }
+    
+    .grid-investimento {
+        grid-template-columns: 1fr 1fr;
+    }
+}
