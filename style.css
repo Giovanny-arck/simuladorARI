@@ -1,0 +1,475 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f9fb;
+    color: #333;
+    margin: 0;
+    padding: 12px;
+    box-sizing: border-box;
+    line-height: 1.5;
+}
+
+.container {
+    margin: 0 auto; 
+    max-width: 1000px; 
+    width: 100%;
+    padding: 0;
+}
+
+.form-section {
+    border: 1px solid #ddd;
+    padding: 15px 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background: #fafafa;
+    box-sizing: border-box;
+}
+
+.form-section h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: #400140;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+}
+
+.obrigatorio {
+    color: red;
+    margin-left: 4px;
+    font-size: 0.9em;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.grid-cliente {
+    grid-template-columns: 1fr;
+}
+
+.grid-investimento {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    font-size: 0.9em;
+    margin-bottom: 6px;
+    color: #400140;
+}
+
+input, select {
+    width: 100%;
+    padding: 14px 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px; /* Tamanho mínimo para mobile */
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #400140;
+    outline: none;
+}
+
+input {
+    max-width: 100%;
+}
+
+button {
+    background: #400140;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin: 5px 0;
+}
+
+button:hover {
+    background: #2d002d;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 14px;
+    table-layout: fixed;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px 8px;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+th {
+    background: #400140;
+    color: white;
+    font-weight: 600;
+}
+
+.tabela-faixas th {
+    background: #600160;
+}
+
+.destaque {
+    background-color: #400140 !important;
+    color: white !important;
+    font-weight: bold;
+}
+
+.hidden-col {
+    display: none;
+}
+
+/* Container da imagem */
+.image-container {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto 20px;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Imagem responsiva */
+.form-responsive-image {
+    width: 100%;
+    height: auto;
+    min-height: 150px;
+    max-height: 200px;
+    display: block;
+    object-fit: cover;
+    margin: 0 auto;
+}
+
+/* Button Groups */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.recebimento-btn, .prazo-btn {
+    background: #e0e0e0;
+    color: #333;
+    padding: 16px 12px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.recebimento-btn.selected, .prazo-btn.selected {
+    background: #400140;
+    color: white;
+}
+
+/* Mensagens de erro */
+.mensagem-erro {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 5px;
+    display: none;
+}
+
+/* Estilos para o botão próximo */
+#btn-proximo {
+    transition: all 0.3s ease;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#btn-proximo:not(:disabled) {
+    opacity: 1;
+    cursor: pointer;
+}
+
+/* Estilos para validação visual */
+input:valid {
+    border-color: #4CAF50 !important;
+}
+
+input:invalid {
+    border-color: #ccc;
+}
+
+/* Estilos para textos explicativos */
+.texto-explicativo {
+    background-color: #f8f9fa;
+    border-left: 4px solid #400140;
+    padding: 15px 12px;
+    margin: 20px 0;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.texto-explicativo h4 {
+    color: #400140;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.texto-explicativo p {
+    margin: 8px 0;
+    line-height: 1.5;
+    color: #555;
+}
+
+.texto-explicativo strong {
+    color: #400140;
+}
+
+/* Melhorias para mobile */
+.mobile-optimized {
+    -webkit-tap-highlight-color: transparent;
+}
+
+input, select, button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Ajustes específicos para mobile */
+@media (max-width: 768px) {
+    body {
+        padding: 10px 8px;
+        font-size: 14px;
+    }
+    
+    .form-section {
+        padding: 12px 10px;
+        margin-bottom: 12px;
+    }
+    
+    .form-section h3 {
+        font-size: 1.1em;
+        margin-bottom: 10px;
+    }
+    
+    input, select {
+        padding: 16px 12px;
+        font-size: 16px;
+        border-radius: 6px;
+    }
+    
+    button {
+        padding: 16px;
+        font-size: 16px;
+        border-radius: 6px;
+    }
+    
+    table {
+        font-size: 12px;
+    }
+    
+    th, td {
+        padding: 8px 6px;
+    }
+    
+    .button-group {
+        gap: 8px;
+    }
+    
+    .recebimento-btn, .prazo-btn {
+        padding: 14px 10px;
+        font-size: 14px;
+    }
+    
+    .texto-explicativo {
+        padding: 12px 10px;
+        margin: 15px 0;
+        font-size: 13px;
+    }
+    
+    .image-container {
+        margin: 0 auto 15px;
+        border-radius: 10px;
+    }
+    
+    .form-responsive-image {
+        min-height: 130px;
+        max-height: 180px;
+    }
+}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .grid-cliente {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .grid-investimento {
+        flex-direction: row;
+        gap: 20px;
+    }
+    
+    .button-group {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    button {
+        width: auto;
+        min-width: 120px;
+    }
+    
+    .valor-investido-container,
+    .forma-recebimento-container {
+        flex: 1;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1025px) {
+    body {
+        padding: 20px;
+    }
+    
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+    
+    .grid-cliente {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .grid-investimento {
+        flex-direction: row;
+        gap: 30px;
+    }
+    
+    .button-group {
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    
+    button {
+        width: auto;
+        min-width: 150px;
+    }
+    
+    .btn-group {
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .form-section {
+        padding: 20px;
+    }
+    
+    .image-container {
+        margin: 0 auto 25px;
+    }
+    
+    .form-responsive-image {
+        min-height: 180px;
+        max-height: 250px;
+    }
+}
+
+/* Melhorias de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Melhorias para telas muito pequenas */
+@media (max-width: 360px) {
+    body {
+        padding: 8px 6px;
+        font-size: 13px;
+    }
+    
+    .form-section {
+        padding: 10px 8px;
+    }
+    
+    input, select {
+        padding: 14px 10px;
+        font-size: 15px;
+    }
+    
+    button {
+        padding: 14px;
+        font-size: 15px;
+    }
+    
+    table {
+        font-size: 11px;
+    }
+    
+    th, td {
+        padding: 6px 4px;
+    }
+}
+
+/* Orientação landscape para mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .container {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    
+    .form-section {
+        padding: 10px;
+    }
+    
+    .grid {
+        gap: 8px;
+    }
+}
+
+/* High-density displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
