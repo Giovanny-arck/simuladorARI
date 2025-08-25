@@ -20,7 +20,7 @@
         <div class="grid grid-cliente">
             <div>
                 <label>Cliente <span class="obrigatorio">*</span></label>
-                <input type="text" id="cliente" required placeholder="Nome Completo">
+                <input type="text" id="cliente" required placeholder="Nome completo">
             </div>
             <div>
                 <label>E-mail <span class="obrigatorio">*</span></label>
@@ -32,7 +32,7 @@
             </div>
             <div>
                 <label>Contato <span class="obrigatorio">*</span></label>
-                <input type="text" id="contato" required placeholder="(DDD) XXXXX-XXXX" maxlength="12" minlength="9">
+                <input type="text" id="contato" required placeholder="(DDD) xxxxx-xxxx">
             </div>
         </div>
         <div class="btn-group">
@@ -90,6 +90,17 @@
                 </thead>
                 <tbody id="resBody"></tbody>
             </table>
+        </div>
+        
+        <!-- Textos Explicativos -->
+        <div id="texto-explicativo-mensal" class="texto-explicativo" style="display: none;">
+            <h4>💡 Como funciona o Rendimento Mensal?</h4>
+            <p>No <strong>Rendimento Mensal</strong>, você recebe o seu investimento mensalmente e seu capital investido no fim do prazo do seu contrato.</p>
+        </div>
+        
+        <div id="texto-explicativo-final" class="texto-explicativo" style="display: none;">
+            <h4>💡 Como funciona o Rendimento no Final?</h4>
+            <p>No <strong>Rendimento no Final</strong>, você recebe o rendimento maior e o seu capital investido no fim do prazo de seu contrato.</p>
         </div>
         
         <!-- Seleção de Prazo -->

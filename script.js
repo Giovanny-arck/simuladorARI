@@ -204,6 +204,15 @@ function selecionarForma(forma) {
     // Esconder a tabela de faixas
     document.getElementById('tabela-faixas').style.display = 'none';
     
+    // MOSTRAR TEXTO EXPLICATIVO CORRESPONDENTE
+    if (forma === 'mensal') {
+        document.getElementById('texto-explicativo-mensal').style.display = 'block';
+        document.getElementById('texto-explicativo-final').style.display = 'none';
+    } else {
+        document.getElementById('texto-explicativo-mensal').style.display = 'none';
+        document.getElementById('texto-explicativo-final').style.display = 'block';
+    }
+    
     // Calcular e exibir resultados
     calcular();
 }

@@ -251,3 +251,28 @@ input:invalid {
         grid-template-columns: 1fr 1fr;
     }
 }
+/* Estilos para textos explicativos */
+.texto-explicativo {
+    background-color: #f8f9fa;
+    border-left: 4px solid #400140;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.texto-explicativo h4 {
+    color: #400140;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.texto-explicativo p {
+    margin: 8px 0;
+    line-height: 1.5;
+    color: #555;
+}
+
+.texto-explicativo strong {
+    color: #400140;
+}
