@@ -21,6 +21,22 @@ let formaSelecionada = null;
 let prazoSelecionado = null;
 let valorInvestido = 0;
 
+// Adicione esta função no final do script.js para melhorar a experiência mobile
+function otimizarMobile() {
+    // Prevenir zoom no focus em iOS
+    document.addEventListener('touchstart', function() {}, {passive: true});
+    
+    // Melhorar performance em mobile
+    if ('ontouchstart' in window) {
+        document.body.classList.add('mobile-optimized');
+    }
+}
+
+// Chame a função no DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+    otimizarMobile();
+});
+
 // Inicialização
 document.addEventListener('DOMContentLoaded', function() {
     // Máscara de moeda BRL corrigida - SEM divisão por 100
