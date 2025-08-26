@@ -229,8 +229,8 @@ input:invalid {
     border-color: #ccc;
 }
 
-/* Estilos para textos explicativos */
-.texto-explicativo {
+/* Estilos para caixas de informação (NOVA CLASSE) */
+.info-box {
     background-color: #f8f9fa;
     border-left: 4px solid #400140;
     padding: 15px 12px;
@@ -239,22 +239,50 @@ input:invalid {
     font-size: 14px;
 }
 
-.texto-explicativo h4 {
+.info-box h4 {
     color: #400140;
     margin-top: 0;
     margin-bottom: 10px;
     font-size: 1.1em;
 }
 
-.texto-explicativo p {
+.info-box p {
     margin: 8px 0;
     line-height: 1.5;
     color: #555;
 }
 
-.texto-explicativo strong {
+.info-box strong {
     color: #400140;
 }
+
+/* --- NOVAS REGRAS DE ESTILO --- */
+
+/* 1. Aumenta a tabela principal de resultados */
+#tabela-resultados table th,
+#tabela-resultados table td {
+    padding: 14px 10px; /* Aumenta o espaçamento interno */
+    font-size: 16px;   /* Aumenta o tamanho da fonte */
+}
+
+#tabela-resultados table th {
+    font-size: 17px;   /* Deixa o cabeçalho um pouco maior */
+}
+
+/* 2. Diminui a tabela informativa de faixas */
+#tabela-faixas table th,
+#tabela-faixas table td {
+    padding: 8px 6px;  /* Diminui o espaçamento */
+    font-size: 13px;   /* Diminui a fonte */
+}
+
+/* Ajusta o título da caixa de faixas para ficar proporcional */
+#tabela-faixas h4 {
+    font-size: 1em;
+    margin-bottom: 8px;
+}
+
+/* --- FIM DAS NOVAS REGRAS --- */
 
 /* Melhorias para mobile */
 .mobile-optimized {
@@ -313,7 +341,7 @@ input, select, button {
         font-size: 14px;
     }
     
-    .texto-explicativo {
+    .info-box {
         padding: 12px 10px;
         margin: 15px 0;
         font-size: 13px;

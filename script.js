@@ -125,15 +125,35 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function validarDadosCliente() {
-    const cliente = document.getElementById('cliente').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const profissao = document.getElementById('profissao').value.trim();
-    const contato = document.getElementById('contato').value.trim();
-    
-    const todosPreenchidos = cliente && email && profissao && contato;
+    const clientePreenchido = document.getElementById('cliente').value.trim() !== '';
+    const emailPreenchido = document.getElementById('email').value.trim() !== '';
+    const profissaoPreenchida = document.getElementById('profissao').value.trim() !== '';
+
+    const contatoInput = document.getElementById('contato');
+    const contatoErro = document.getElementById('contato-erro');
+    const contatoValor = contatoInput.value.trim();
+    const numerosContato = contatoValor.replace(/\D/g, ''); // Remove caracteres não numéricos
+    let contatoValido = false;
+
+    if (contatoValor === '') {
+        // Se o campo está vazio, esconde a mensagem de erro específica de DDD
+        contatoErro.style.display = 'none';
+        contatoValido = false; // Mas ainda não é válido para prosseguir
+    } else if (numerosContato.length >= 10) {
+        // Tem 10 ou mais dígitos (DDD + número), então é válido
+        contatoErro.style.display = 'none';
+        contatoValido = true;
+    } else {
+        // Preenchido, mas com menos de 10 dígitos (sem DDD)
+        contatoErro.style.display = 'block';
+        contatoValido = false;
+    }
+
+    // Verifica se todos os campos, incluindo o contato com DDD, são válidos
+    const todosValidos = clientePreenchido && emailPreenchido && profissaoPreenchida && contatoValido;
     const btnProximo = document.getElementById('btn-proximo');
     
-    if (todosPreenchidos) {
+    if (todosValidos) {
         btnProximo.disabled = false;
         btnProximo.style.opacity = "1";
         btnProximo.style.cursor = "pointer";
@@ -143,7 +163,7 @@ function validarDadosCliente() {
         btnProximo.style.cursor = "not-allowed";
     }
     
-    return todosPreenchidos;
+    return todosValidos;
 }
 
 function avancarParaInvestimento() {
@@ -169,7 +189,10 @@ function validarCampo(campo) {
         campo.style.borderColor = 'red';
         return false;
     } else {
-        campo.style.borderColor = '#ccc';
+        // A validação do DDD cuidará da borda do campo de contato
+        if (campo.id !== 'contato') {
+            campo.style.borderColor = '#ccc';
+        }
         return true;
     }
 }
@@ -178,10 +201,10 @@ function validarFormulario() {
     let valido = true;
     const camposObrigatorios = document.querySelectorAll('input[required]');
     
-    // Validar dados do cliente
+    // Validar dados do cliente (já inclui a checagem do DDD)
     if (!validarDadosCliente()) {
         valido = false;
-        alert("Por favor, preencha todos os dados do cliente.");
+        alert("Por favor, preencha todos os dados do cliente, incluindo um telefone com DDD.");
         return false;
     }
     
@@ -345,12 +368,35 @@ async function enviarProposta() {
     if (!validarFormulario()) return;
     
     try {
+        // --- INÍCIO DA ALTERAÇÃO ---
+        
+        // 1. Pega o valor bruto do campo de contato
+        const contatoRaw = document.getElementById('contato').value;
+        
+        // 2. Remove todos os caracteres que não são dígitos (espaços, traços, parênteses, etc.)
+        const numeros = contatoRaw.replace(/\D/g, '');
+        
+        let contatoFormatado;
+        
+        // 3. Verifica se o número JÁ PARECE ter o código do país (+55)
+        // Um número completo com DDI tem 13 dígitos (celular) ou 12 (fixo)
+        if (numeros.startsWith('55') && (numeros.length === 12 || numeros.length === 13)) {
+            // Se já tem, apenas adiciona o '+' no início
+            contatoFormatado = '+' + numeros;
+        } else {
+            // Para todos os outros casos (ex: (47) 9..., ou um DDD 55 como em (55) 9...), 
+            // adiciona o +55 no início
+            contatoFormatado = '+55' + numeros;
+        }
+        
+        // --- FIM DA ALTERAÇÃO ---
+
         // Coletar dados do formulário
         const dados = {
             cliente: document.getElementById('cliente').value,
             email: document.getElementById('email').value,
             profissao: document.getElementById('profissao').value,
-            contato: document.getElementById('contato').value,
+            contato: contatoFormatado, // 4. Usa o número já formatado
             valor: valorInvestido,
             forma: formaSelecionada,
             prazo: prazoSelecionado,

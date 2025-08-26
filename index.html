@@ -31,6 +31,7 @@
             <div>
                 <label>Contato <span class="obrigatorio">*</span></label>
                 <input type="text" id="contato" required placeholder="(DDD) xxxxx-xxxx">
+                <div id="contato-erro" class="mensagem-erro" style="display: none;">Por favor, inclua o DDD (mínimo 10 dígitos).</div>
             </div>
         </div>
         <div class="btn-group">
@@ -69,7 +70,15 @@
             </div>
         </div>
         
-        <div id="tabela-faixas" style="display: none; margin-top: 20px;">
+        <div id="tabela-resultados" style="display: none;">
+            <table id="resultado">
+                <thead id="resultado-head">
+                    </thead>
+                <tbody id="resBody"></tbody>
+            </table>
+        </div>
+
+        <div id="tabela-faixas" class="info-box" style="display: none; margin-top: 20px;">
             <h4>Faixas de Rendimento Adicional (Rendimento 3)</h4>
             <table class="tabela-faixas">
                 <thead>
@@ -83,21 +92,13 @@
                 </tbody>
             </table>
         </div>
-
-        <div id="tabela-resultados" style="display: none;">
-            <table id="resultado">
-                <thead id="resultado-head">
-                    </thead>
-                <tbody id="resBody"></tbody>
-            </table>
-        </div>
         
-        <div id="texto-explicativo-mensal" class="texto-explicativo" style="display: none;">
+        <div id="texto-explicativo-mensal" class="info-box" style="display: none;">
             <h4>💡 Como funciona o Rendimento Mensal?</h4>
             <p>No <strong>Rendimento Mensal</strong>, você recebe o seu investimento mensalmente e seu capital investido no fim do prazo do seu contrato.</p>
         </div>
         
-        <div id="texto-explicativo-final" class="texto-explicativo" style="display: none;">
+        <div id="texto-explicativo-final" class="info-box" style="display: none;">
             <h4>💡 Como funciona o Rendimento no Final?</h4>
             <p>No <strong>Rendimento no Final</strong>, você recebe o rendimento maior e o seu capital investido no fim do prazo de seu contrato.</p>
         </div>
