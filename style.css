@@ -208,18 +208,6 @@ th {
     display: none;
 }
 
-/* Estilos para o botão próximo */
-#btn-proximo {
-    transition: all 0.3s ease;
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-#btn-proximo:not(:disabled) {
-    opacity: 1;
-    cursor: pointer;
-}
-
 /* Estilos para validação visual */
 input:valid {
     border-color: #4CAF50 !important;
@@ -229,11 +217,10 @@ input:invalid {
     border-color: #ccc;
 }
 
-/* Estilos para caixas de informação (NOVA CLASSE) */
+/* Estilos para caixas de informação */
 .info-box {
     background-color: #f8f9fa;
-    border-left: 4px solid #400140;
-    padding: 15px 12px;
+    border-left: 0px solid #400140;
     margin: 20px 0;
     border-radius: 8px;
     font-size: 14px;
@@ -256,248 +243,83 @@ input:invalid {
     color: #400140;
 }
 
-/* --- NOVAS REGRAS DE ESTILO --- */
-
-/* 1. Aumenta a tabela principal de resultados */
+/* REGRAS DE ESTILO PARA TABELAS */
 #tabela-resultados table th,
 #tabela-resultados table td {
-    padding: 14px 10px; /* Aumenta o espaçamento interno */
-    font-size: 16px;   /* Aumenta o tamanho da fonte */
+    padding: 14px 10px;
+    font-size: 16px;
 }
-
 #tabela-resultados table th {
-    font-size: 17px;   /* Deixa o cabeçalho um pouco maior */
+    font-size: 17px;
 }
 
-/* 2. Diminui a tabela informativa de faixas */
-#tabela-faixas table th,
-#tabela-faixas table td {
-    padding: 8px 6px;  /* Diminui o espaçamento */
-    font-size: 13px;   /* Diminui a fonte */
-}
-
-/* Ajusta o título da caixa de faixas para ficar proporcional */
-#tabela-faixas h4 {
-    font-size: 1em;
-    margin-bottom: 8px;
-}
-
-/* --- FIM DAS NOVAS REGRAS --- */
+/* As regras para a seta customizada foram removidas */
 
 /* Melhorias para mobile */
 .mobile-optimized {
     -webkit-tap-highlight-color: transparent;
 }
 
-input, select, button {
+input, select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
 }
 
-/* Ajustes específicos para mobile */
 @media (max-width: 768px) {
-    body {
-        padding: 10px 8px;
-        font-size: 14px;
-    }
-    
-    .form-section {
-        padding: 12px 10px;
-        margin-bottom: 12px;
-    }
-    
-    .form-section h3 {
-        font-size: 1.1em;
-        margin-bottom: 10px;
-    }
-    
-    input, select {
-        padding: 16px 12px;
-        font-size: 16px;
-        border-radius: 6px;
-    }
-    
-    button {
-        padding: 16px;
-        font-size: 16px;
-        border-radius: 6px;
-    }
-    
-    table {
-        font-size: 12px;
-    }
-    
-    th, td {
-        padding: 8px 6px;
-    }
-    
-    .button-group {
-        gap: 8px;
-    }
-    
-    .recebimento-btn, .prazo-btn {
-        padding: 14px 10px;
-        font-size: 14px;
-    }
-    
-    .info-box {
-        padding: 12px 10px;
-        margin: 15px 0;
-        font-size: 13px;
-    }
-    
-    .image-container {
-        margin: 0 auto 15px;
-        border-radius: 10px;
-    }
-    
-    .form-responsive-image {
-        min-height: 130px;
-        max-height: 180px;
-    }
+    body { padding: 10px 8px; font-size: 14px; }
+    .form-section { padding: 12px 10px; margin-bottom: 12px; }
+    .form-section h3 { font-size: 1.1em; margin-bottom: 10px; }
+    input, select { padding: 16px 12px; font-size: 16px; border-radius: 6px; }
+    button { padding: 16px; font-size: 16px; border-radius: 6px; }
+    table { font-size: 12px; }
+    th, td { padding: 8px 6px; }
+    .button-group { gap: 8px; }
+    .recebimento-btn, .prazo-btn { padding: 14px 10px; font-size: 14px; }
+    .info-box { padding: 12px 10px; margin: 15px 0; font-size: 13px; }
+    .image-container { margin: 0 auto 15px; border-radius: 10px; }
+    .form-responsive-image { min-height: 130px; max-height: 180px; }
 }
 
-/* Tablet */
 @media (min-width: 769px) and (max-width: 1024px) {
-    .grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
-    
-    .grid-cliente {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .grid-investimento {
-        flex-direction: row;
-        gap: 20px;
-    }
-    
-    .button-group {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-    
-    button {
-        width: auto;
-        min-width: 120px;
-    }
-    
-    .valor-investido-container,
-    .forma-recebimento-container {
-        flex: 1;
-    }
+    .grid, .grid-cliente { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    .grid-investimento { flex-direction: row; gap: 20px; }
+    .button-group { flex-direction: row; flex-wrap: wrap; }
+    button { width: auto; min-width: 120px; }
+    .valor-investido-container, .forma-recebimento-container { flex: 1; }
 }
 
-/* Desktop */
 @media (min-width: 1025px) {
-    body {
-        padding: 20px;
-    }
-    
-    .grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-    }
-    
-    .grid-cliente {
-        grid-template-columns: repeat(4, 1fr);
-    }
-    
-    .grid-investimento {
-        flex-direction: row;
-        gap: 30px;
-    }
-    
-    .button-group {
-        flex-direction: row;
-        flex-wrap: nowrap;
-    }
-    
-    button {
-        width: auto;
-        min-width: 150px;
-    }
-    
-    .btn-group {
-        flex-direction: row;
-        justify-content: center;
-    }
-    
-    .form-section {
-        padding: 20px;
-    }
-    
-    .image-container {
-        margin: 0 auto 25px;
-    }
-    
-    .form-responsive-image {
-        min-height: 180px;
-        max-height: 250px;
-    }
+    body { padding: 20px; }
+    .grid, .grid-cliente { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .grid-investimento { flex-direction: row; gap: 30px; }
+    .button-group { flex-direction: row; flex-wrap: nowrap; }
+    button { width: auto; min-width: 150px; }
+    .btn-group { flex-direction: row; justify-content: center; }
+    .form-section { padding: 20px; }
+    .image-container { margin: 0 auto 25px; }
+    .form-responsive-image { min-height: 180px; max-height: 250px; }
 }
 
-/* Melhorias de acessibilidade */
 @media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
+    * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
 
-/* Melhorias para telas muito pequenas */
 @media (max-width: 360px) {
-    body {
-        padding: 8px 6px;
-        font-size: 13px;
-    }
-    
-    .form-section {
-        padding: 10px 8px;
-    }
-    
-    input, select {
-        padding: 14px 10px;
-        font-size: 15px;
-    }
-    
-    button {
-        padding: 14px;
-        font-size: 15px;
-    }
-    
-    table {
-        font-size: 11px;
-    }
-    
-    th, td {
-        padding: 6px 4px;
-    }
+    body { padding: 8px 6px; font-size: 13px; }
+    .form-section { padding: 10px 8px; }
+    input, select { padding: 14px 10px; font-size: 15px; }
+    button { padding: 14px; font-size: 15px; }
+    table { font-size: 11px; }
+    th, td { padding: 6px 4px; }
 }
 
-/* Orientação landscape para mobile */
 @media (max-height: 500px) and (orientation: landscape) {
-    .container {
-        max-height: 90vh;
-        overflow-y: auto;
-    }
-    
-    .form-section {
-        padding: 10px;
-    }
-    
-    .grid {
-        gap: 8px;
-    }
+    .container { max-height: 90vh; overflow-y: auto; }
+    .form-section { padding: 10px; }
+    .grid { gap: 8px; }
 }
 
-/* High-density displays */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    body {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
+    body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 }
