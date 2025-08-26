@@ -46,7 +46,7 @@ function resetarTabelaParaPlaceholders() {
             <tr><td>24 meses</td><td>-</td><td>-</td></tr>
             <tr><td>36 meses</td><td>-</td><td>-</td></tr>
         `;
-    } else {
+    } else { // Padrão 'mensal'
         thead.innerHTML = `<tr><th>Prazo</th><th>Rendimento Mensal (R$)</th><th>Retorno no Fim do Contrato</th><th>Retorno Total</th><th>Taxa Efetiva a.m.</th></tr>`;
         tbody.innerHTML = `
             <tr><td>18 meses</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
@@ -214,7 +214,12 @@ function calcular() {
             const taxaBase = taxaPrazo[prazo].final;
             const taxaExtraValor = obterTaxaExtraPorValor(valorInvestido);
             const taxaTotal = taxaBase + taxaAdicionalFinal + taxaExtraValor;
-            const retornoTotal = valorInvestido * Math.pow(1 + taxaTotal, prazo);
+
+            // --- CÁLCULO CORRIGIDO PARA JUROS SIMPLES ---
+            const jurosTotais = (valorInvestido * taxaTotal) * prazo;
+            const retornoTotal = valorInvestido + jurosTotais;
+            // --- FIM DA CORREÇÃO ---
+
             const taxaFormatada = (taxaTotal > 0) ? `${(taxaTotal * 100).toFixed(2).replace('.', ',')}%` : '-';
             tbody.innerHTML += `<tr><td>${prazo} meses</td><td>${formatarMoeda(retornoTotal, true)}</td><td>${taxaFormatada}</td></tr>`;
         });
