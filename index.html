@@ -9,7 +9,7 @@
 <body>
 
 <div class="image-container">
-    <img src="/img banner/capa final.png" alt="Investimento ARI" class="form-responsive-image">
+    <img src="/img banner/Cópia capa simulador.png" alt="Investimento ARI" class="form-responsive-image">
 </div>
 <div class="container">
 
@@ -38,8 +38,8 @@
             <div class="forma-recebimento-container" id="container-forma-recebimento">
                 <label>Forma de Recebimento <span class="obrigatorio">*</span></label>
                 <div class="button-group">
-                    <button type="button" id="btn-mensal" class="recebimento-btn" onclick="selecionarForma('mensal')">Rendimento Mensal</button>
                     <button type="button" id="btn-final" class="recebimento-btn" onclick="selecionarForma('final')">Rendimento no Final</button>
+                    <button type="button" id="btn-mensal" class="recebimento-btn" onclick="selecionarForma('mensal')">Rendimento Mensal</button>
                 </div>
             </div>
         </div>
@@ -47,45 +47,32 @@
         <div id="tabela-resultados">
             <table id="resultado">
                 <thead id="resultado-head">
-                    <tr><th>Prazo</th><th>Rendimento Mensal (R$)</th><th>Retorno no Fim do Contrato</th><th>Retorno Total</th><th>Taxa Efetiva a.m.</th></tr>
+                    <tr><th>Prazo</th><th>Retorno Total</th><th>Taxa Efetiva a.m.</th></tr>
                 </thead>
                 <tbody id="resBody">
-                    <tr><td>18 meses</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-                    <tr><td>24 meses</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-                    <tr><td>36 meses</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>18 meses</td><td>-</td><td>-</td></tr>
+                    <tr><td>24 meses</td><td>-</td><td>-</td></tr>
+                    <tr><td>36 meses</td><td>-</td><td>-</td></tr>
                 </tbody>
             </table>
         </div>
 
-        <!--<div id="tabela-faixas" class="info-box" style="margin-top: 20px;">
-            <h4>Faixas de Rendimento Adicional (Rendimento 3)</h4>
-            <table class="tabela-faixas">
-                <thead>
-                    <tr><th>Faixas</th><th>Valores de Investimento (R$)</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Faixa 1</td><td>20.000 a 99.999</td></tr>
-                    <tr><td>Faixa 2</td><td>100.000 a 199.999</td></tr>
-                    <tr><td>Faixa 3</td><td>200.000 a 399.999</td></tr>
-                    <tr><td>Faixa 4</td><td>Acima de 400.000</td></tr>
-                </tbody>
-            </table>
-        </div>--->
-
-        <div id="tabela-faixas" class="info-box" style="margin-top: 20px;">
+         <div id="tabela-faixas" class="info-box" style="margin-top: 20px;">
             <h4><strong>Faixas de valores</strong></h4>
-             <p>Os investimentos estão organizados em cinco faixas de valores, que vão da Faixa 1 até a Faixa 5. Cada faixa representa um nível de aporte, permitindo que o investidor escolha a opção mais adequada ao seu perfil e objetivos financeiros:</p>
+             <p>Os investimentos estão organizados em cinco faixas de valores, que vão da Faixa 1 até a Faixa 5. Cada faixa representa um nível de aporte, 		permitindo que o investidor escolha a opção mais adequada ao seu perfil e objetivos financeiros:</p>
              <p>Faixa 1 -  20.000 a 99.999</p>   
              <p>Faixa 2 - 100.000 a 199.999</p>
              <p>Faixa 3 - 200.000 a 399.999</p>
              <p>Faixa 4 - Acima de 400.000 </p>
+        </div>
         
-        <div id="texto-explicativo-mensal" class="info-box">
+        
+        <div id="texto-explicativo-mensal" class="info-box" style="display: none;">
             <h4>💡 Como funciona o Rendimento Mensal?</h4>
             <p>No <strong>Rendimento Mensal</strong>, você recebe o seu investimento mensalmente e seu capital investido no fim do prazo do seu contrato.</p>
         </div>
         
-        <div id="texto-explicativo-final" class="info-box" style="display: none;">
+        <div id="texto-explicativo-final" class="info-box">
             <h4>💡 Como funciona o Rendimento no Final?</h4>
             <p>No <strong>Rendimento no Final</strong>, você recebe o rendimento maior e o seu capital investido no fim do prazo de seu contrato.</p>
         </div>

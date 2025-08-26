@@ -46,7 +46,7 @@ function resetarTabelaParaPlaceholders() {
             <tr><td>24 meses</td><td>-</td><td>-</td></tr>
             <tr><td>36 meses</td><td>-</td><td>-</td></tr>
         `;
-    } else { // Padrão 'mensal'
+    } else {
         thead.innerHTML = `<tr><th>Prazo</th><th>Rendimento Mensal (R$)</th><th>Retorno no Fim do Contrato</th><th>Retorno Total</th><th>Taxa Efetiva a.m.</th></tr>`;
         tbody.innerHTML = `
             <tr><td>18 meses</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
@@ -63,24 +63,22 @@ function resetarTabelaParaPlaceholders() {
 
 // --- INICIALIZAÇÃO E EVENTOS ---
 document.addEventListener('DOMContentLoaded', function() {
-    formaSelecionada = 'mensal';
-    document.getElementById('btn-mensal').classList.add('selected');
+    // Define "Rendimento no Final" como o padrão ao carregar a página
+    formaSelecionada = 'final';
+    document.getElementById('btn-final').classList.add('selected');
 
     const valorInput = document.getElementById('valor');
 
-    // Evento ao CLICAR NO CAMPO (FOCUS): Limpa para garantir que o datalist apareça
     valorInput.addEventListener('focus', () => {
         valorInput.value = '';
         valorInput.placeholder = 'Selecione ou digite um valor';
     });
     
-    // Evento ao SAIR DO CAMPO (BLUR): Formata o valor final
     valorInput.addEventListener('blur', () => {
         valorInput.value = valorInvestido >= 20000 ? formatarMoeda(valorInvestido) : '';
         valorInput.placeholder = 'Digite ou selecione';
     });
 
-    // Evento ao DIGITAR ou SELECIONAR um valor
     valorInput.addEventListener('input', () => {
         const valorNumerico = desformatarMoeda(valorInput.value);
         
@@ -189,9 +187,9 @@ function obterTaxaExtraPorValor(valor) {
 }
 
 function calcular() {
-    if (!formaSelecionada) return; // Se não houver forma, não calcula
+    if (!formaSelecionada) return;
     if (valorInvestido < 20000) {
-        resetarTabelaParaPlaceholders(); // Garante que a tabela resete se o valor for insuficiente
+        resetarTabelaParaPlaceholders();
         return;
     }
     
