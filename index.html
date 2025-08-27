@@ -44,10 +44,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="container">
     <form id="investment-form" novalidate>
         <div class="form-section dados-investimento">
-            <h3>Dados do Investimento <span class="obrigatorio">*</span></h3>
+            <h3>Dados do Investimento <span class="obrigatorio"></span></h3>
             <div class="grid-investimento">
                 <div class="valor-investido-container">
-                    <label>Valor Investido (R$) <span class="obrigatorio">*</span></label>
+                    <label>Valor Investido (R$) <span class="obrigatorio"></span></label>
                     <input type="text" id="valor" list="valoresSugeridos" placeholder="Digite ou selecione" required min="20000">
                     <datalist id="valoresSugeridos">
                         <option value="R$ 20.000,00">
@@ -66,7 +66,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </div>
                 
                 <div class="forma-recebimento-container" id="container-forma-recebimento">
-                    <label>Forma de Recebimento <span class="obrigatorio">*</span></label>
+                    <label>Forma de Recebimento <span class="obrigatorio"></span></label>
                     <div class="button-group">
                         <button type="button" id="btn-final" class="recebimento-btn" onclick="selecionarForma('final')">Rendimento no Final</button>
                         <button type="button" id="btn-mensal" class="recebimento-btn" onclick="selecionarForma('mensal')">Rendimento Mensal</button>
@@ -77,7 +77,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div id="tabela-resultados">
                 <table id="resultado">
                     <thead id="resultado-head">
-                        <tr><th>Prazo</th><th>Retorno Total</th><th>Taxa Efetiva a.m.</th></tr>
+                        <tr><th>Prazo</th><th>Retorno Total</th><th>Taxa Efetiva</th></tr>
                     </thead>
                     <tbody id="resBody">
                         <tr><td>18 meses</td><td>-</td><td>-</td></tr>
