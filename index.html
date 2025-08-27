@@ -118,27 +118,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
     
     <div class="form-section" id="dados-cliente-section" style="display: none;">
-        <h3>Dados do Cliente <span class="obrigatorio"></span></h3>
-        <div class="grid grid-cliente">
-            <div>
-                <label>Cliente <span class="obrigatorio">*</span></label>
-                <input type="text" id="cliente" required placeholder="Nome completo">
-            </div>
-            <div>
-                <label>E-mail <span class="obrigatorio">*</span></label>
-                <input type="email" id="email" required placeholder="E-mail">
-            </div>
-            <div>
-                <label>Profissão <span class="obrigatorio">*</span></label>
-                <input type="text" id="profissao" required placeholder="Profissão">
-            </div>
-            <div>
-                <label>Contato <span class="obrigatorio">*</span></label>
-                <input type="text" id="contato" required placeholder="(DDD) xxxxx-xxxx">
-                <div id="contato-erro" class="mensagem-erro" style="display: none;">Por favor, inclua o DDD (mínimo 10 dígitos).</div>
+            <h3>Dados do Cliente <span class="obrigatorio"></span></h3>
+            <div class="grid grid-cliente">
+                <div>
+                    <label>Cliente <span class="obrigatorio">*</span></label>
+                    <input type="text" id="cliente" required placeholder="Nome completo">
+                </div>
+                <div>
+                    <label>E-mail <span class="obrigatorio">*</span></label>
+                    <input type="email" id="email" required>
+                </div>
+                <div>
+                    <label>Profissão <span class="obrigatorio">*</span></label>
+                    <input type="text" id="profissao" required>
+                </div>
+                <div>
+                    <label>Contato <span class="obrigatorio">*</span></label>
+                    <input type="text" id="contato" required placeholder="(DDD) xxxxx-xxxx">
+                    <div id="contato-erro" class="mensagem-erro" style="display: none;">Por favor, inclua o DDD (mínimo 10 dígitos).</div>
+                </div>
             </div>
         </div>
-    </div>
 
     <div class="terms-section" id="terms-section" style="display: none;">
         <div class="checkbox-container">
@@ -152,9 +152,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 
     <div class="btn-group">
-        <button type="submit" id="btn-enviar" onclick="enviarProposta()" style="display: none;" disabled>Enviar Proposta</button>
+            <button type="submit" id="btn-enviar" style="display: none;" disabled>Enviar Proposta</button>
+        </div>
+    </form>
     </div>
-</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
