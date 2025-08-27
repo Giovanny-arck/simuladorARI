@@ -63,12 +63,15 @@ label {
     color: #400140;
 }
 
-input, select {
+/* CORREÇÃO: Torna a regra de estilo mais específica para não afetar o checkbox */
+input[type="text"],
+input[type="email"],
+select {
     width: 100%;
     padding: 14px 12px;
     border: 2px solid #ddd;
     border-radius: 8px;
-    font-size: 16px; /* Tamanho mínimo para mobile */
+    font-size: 16px;
     box-sizing: border-box;
     transition: border-color 0.3s ease;
 }
@@ -220,7 +223,8 @@ input:invalid {
 /* Estilos para caixas de informação */
 .info-box {
     background-color: #f8f9fa;
-    border-left: 0px solid #400140;
+    border-left: 4px solid #400140;
+    padding: 15px 12px;
     margin: 20px 0;
     border-radius: 8px;
     font-size: 14px;
@@ -252,15 +256,55 @@ input:invalid {
 #tabela-resultados table th {
     font-size: 17px;
 }
+#tabela-faixas table th,
+#tabela-faixas table td {
+    padding: 8px 6px;
+    font-size: 13px;
+}
+#tabela-faixas h4 {
+    font-size: 1em;
+    margin-bottom: 8px;
+}
+/* FIM DAS REGRAS PARA TABELAS */
 
-/* As regras para a seta customizada foram removidas */
-
-/* Melhorias para mobile */
-.mobile-optimized {
-    -webkit-tap-highlight-color: transparent;
+/* REGRAS PARA O CHECKBOX DE TERMOS */
+.terms-section {
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fafafa;
 }
 
-input, select {
+.checkbox-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.checkbox-container input[type="checkbox"] {
+    width: auto;
+    margin-top: 5px;
+    flex-shrink: 0;
+}
+
+.checkbox-container label {
+    font-size: 13px;
+    font-weight: normal;
+    color: #555;
+    line-height: 1.4;
+    cursor: pointer;
+}
+/* FIM DAS REGRAS DO CHECKBOX */
+
+/* Melhorias para mobile */
+.mobile-optimized { -webkit-tap-highlight-color: transparent; }
+
+/* CORREÇÃO: Aplica o reset de aparência apenas em elementos específicos, excluindo o checkbox */
+input[type="text"],
+input[type="email"],
+select,
+button {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -268,7 +312,7 @@ input, select {
 
 @media (max-width: 768px) {
     body { padding: 10px 8px; font-size: 14px; }
-    .form-section { padding: 12px 10px; margin-bottom: 12px; }
+    .form-section, .terms-section { padding: 12px 10px; margin-bottom: 12px; }
     .form-section h3 { font-size: 1.1em; margin-bottom: 10px; }
     input, select { padding: 16px 12px; font-size: 16px; border-radius: 6px; }
     button { padding: 16px; font-size: 16px; border-radius: 6px; }
@@ -296,7 +340,7 @@ input, select {
     .button-group { flex-direction: row; flex-wrap: nowrap; }
     button { width: auto; min-width: 150px; }
     .btn-group { flex-direction: row; justify-content: center; }
-    .form-section { padding: 20px; }
+    .form-section, .terms-section { padding: 20px; }
     .image-container { margin: 0 auto 25px; }
     .form-responsive-image { min-height: 180px; max-height: 250px; }
 }
@@ -307,7 +351,7 @@ input, select {
 
 @media (max-width: 360px) {
     body { padding: 8px 6px; font-size: 13px; }
-    .form-section { padding: 10px 8px; }
+    .form-section, .terms-section { padding: 10px 8px; }
     input, select { padding: 14px 10px; font-size: 15px; }
     button { padding: 14px; font-size: 15px; }
     table { font-size: 11px; }
@@ -316,7 +360,7 @@ input, select {
 
 @media (max-height: 500px) and (orientation: landscape) {
     .container { max-height: 90vh; overflow-y: auto; }
-    .form-section { padding: 10px; }
+    .form-section, .terms-section { padding: 10px; }
     .grid { gap: 8px; }
 }
 

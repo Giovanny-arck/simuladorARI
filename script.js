@@ -46,7 +46,7 @@ function resetarTabelaParaPlaceholders() {
             <tr><td>24 meses</td><td>-</td><td>-</td></tr>
             <tr><td>36 meses</td><td>-</td><td>-</td></tr>
         `;
-    } else { // Padrão 'mensal'
+    } else {
         thead.innerHTML = `<tr><th>Prazo</th><th>Rendimento Mensal (R$)</th><th>Retorno no Fim do Contrato</th><th>Retorno Total</th><th>Taxa Efetiva a.m.</th></tr>`;
         tbody.innerHTML = `
             <tr><td>18 meses</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
@@ -55,7 +55,9 @@ function resetarTabelaParaPlaceholders() {
         `;
     }
 
+    // Esconde as seções seguintes
     document.getElementById('dados-cliente-section').style.display = 'none';
+    document.getElementById('terms-section').style.display = 'none';
     document.getElementById('btn-enviar').style.display = 'none';
     document.querySelectorAll('.prazo-btn').forEach(btn => btn.classList.remove('selected'));
     prazoSelecionado = null;
@@ -63,27 +65,21 @@ function resetarTabelaParaPlaceholders() {
 
 // --- INICIALIZAÇÃO E EVENTOS ---
 document.addEventListener('DOMContentLoaded', function() {
-    // Define "Rendimento no Final" como o padrão ao carregar a página
     formaSelecionada = 'final';
     document.getElementById('btn-final').classList.add('selected');
 
     const valorInput = document.getElementById('valor');
-
     valorInput.addEventListener('focus', () => {
         valorInput.value = '';
         valorInput.placeholder = 'Selecione ou digite um valor';
     });
-    
     valorInput.addEventListener('blur', () => {
         valorInput.value = valorInvestido >= 20000 ? formatarMoeda(valorInvestido) : '';
         valorInput.placeholder = 'Digite ou selecione';
     });
-
     valorInput.addEventListener('input', () => {
         const valorNumerico = desformatarMoeda(valorInput.value);
-        
         valorInvestido = !isNaN(valorNumerico) && valorNumerico > 0 ? valorNumerico : 0;
-
         if (valorInvestido >= 20000) {
             calcular();
         } else {
@@ -91,11 +87,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    const camposCliente = document.querySelectorAll('#dados-cliente-section input[required]');
+    // Event listener para os campos do cliente
+    const camposCliente = document.querySelectorAll('#dados-cliente-section input');
     camposCliente.forEach(campo => {
         campo.addEventListener('input', () => { validarCampo(campo); validarDadosCliente(); });
         campo.addEventListener('blur', () => { validarCampo(campo); validarDadosCliente(); });
     });
+
+    // Event listener para o novo checkbox
+    document.getElementById('terms-checkbox').addEventListener('change', validarDadosCliente);
 });
 
 // --- FUNÇÕES DE VALIDAÇÃO E FLUXO ---
@@ -105,6 +105,7 @@ function validarDadosCliente() {
     const profissaoPreenchida = document.getElementById('profissao').value.trim() !== '';
     const contatoValor = document.getElementById('contato').value.trim();
     const numerosContato = contatoValor.replace(/\D/g, '');
+    const termsChecked = document.getElementById('terms-checkbox').checked; // Validação do checkbox
     let contatoValido = false;
 
     const contatoErro = document.getElementById('contato-erro');
@@ -119,7 +120,8 @@ function validarDadosCliente() {
         contatoValido = false;
     }
 
-    const todosValidos = clientePreenchido && emailPreenchido && profissaoPreenchida && contatoValido;
+    // Adiciona a verificação do checkbox à condição final
+    const todosValidos = clientePreenchido && emailPreenchido && profissaoPreenchida && contatoValido && termsChecked;
     document.getElementById('btn-enviar').disabled = !todosValidos;
     return todosValidos;
 }
@@ -137,8 +139,9 @@ function validarCampo(campo) {
 }
 
 function validarFormulario() {
+    // A função validarDadosCliente agora checa tudo (campos + checkbox)
     if (!validarDadosCliente()) {
-        alert("Por favor, preencha todos os dados do cliente, incluindo um telefone com DDD.");
+        alert("Por favor, preencha todos os dados do cliente e aceite os termos para continuar.");
         return false;
     }
     if (!formaSelecionada || !prazoSelecionado || valorInvestido < 20000) {
@@ -173,7 +176,9 @@ function selecionarPrazo(prazo) {
         }
     });
 
+    // Mostra a seção de cliente, termos e o botão de enviar
     document.getElementById('dados-cliente-section').style.display = 'block';
+    document.getElementById('terms-section').style.display = 'block';
     document.getElementById('btn-enviar').style.display = 'block';
 }
 
@@ -214,12 +219,8 @@ function calcular() {
             const taxaBase = taxaPrazo[prazo].final;
             const taxaExtraValor = obterTaxaExtraPorValor(valorInvestido);
             const taxaTotal = taxaBase + taxaAdicionalFinal + taxaExtraValor;
-
-            // --- CÁLCULO CORRIGIDO PARA JUROS SIMPLES ---
             const jurosTotais = (valorInvestido * taxaTotal) * prazo;
             const retornoTotal = valorInvestido + jurosTotais;
-            // --- FIM DA CORREÇÃO ---
-
             const taxaFormatada = (taxaTotal > 0) ? `${(taxaTotal * 100).toFixed(2).replace('.', ',')}%` : '-';
             tbody.innerHTML += `<tr><td>${prazo} meses</td><td>${formatarMoeda(retornoTotal, true)}</td><td>${taxaFormatada}</td></tr>`;
         });
