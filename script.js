@@ -64,27 +64,21 @@ function resetarTabelaParaPlaceholders() {
 
 // --- INICIALIZAÇÃO E EVENTOS ---
 document.addEventListener('DOMContentLoaded', function() {
-    // Define "Rendimento no Final" como o padrão ao carregar a página
     formaSelecionada = 'final';
     document.getElementById('btn-final').classList.add('selected');
 
     const valorInput = document.getElementById('valor');
-
     valorInput.addEventListener('focus', () => {
         valorInput.value = '';
         valorInput.placeholder = 'Selecione ou digite um valor';
     });
-    
     valorInput.addEventListener('blur', () => {
         valorInput.value = valorInvestido >= 20000 ? formatarMoeda(valorInvestido) : '';
         valorInput.placeholder = 'Digite ou selecione';
     });
-
     valorInput.addEventListener('input', () => {
         const valorNumerico = desformatarMoeda(valorInput.value);
-        
         valorInvestido = !isNaN(valorNumerico) && valorNumerico > 0 ? valorNumerico : 0;
-
         if (valorInvestido >= 20000) {
             calcular();
         } else {
@@ -99,6 +93,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById('terms-checkbox').addEventListener('change', validarDadosCliente);
+
+    // --- NOVO EVENT LISTENER PARA O SUBMIT DO FORMULÁRIO ---
+    document.getElementById('investment-form').addEventListener('submit', function(event) {
+        // 1. Previne o comportamento padrão do formulário (que é recarregar a página)
+        event.preventDefault();
+        
+        // 2. Chama a sua função de envio que usa a API Fetch
+        enviarProposta();
+    });
 });
 
 // --- FUNÇÕES DE VALIDAÇÃO E FLUXO ---
@@ -227,7 +230,6 @@ function calcular() {
     }
 }
 
-// --- FUNÇÃO DE ENVIO DA PROPOSTA ---
 async function enviarProposta() {
     if (!validarFormulario()) return;
     
@@ -251,39 +253,29 @@ async function enviarProposta() {
             prazo: prazoSelecionado,
             timestamp: new Date().toISOString()
         };
-
-        // --- INÍCIO DA ALTERAÇÃO ---
-
-        // Define as URLs dos webhooks
+        
         const webhookUrl1 = 'https://n8nwebhook.arck1pro.shop/webhook/simulador';
         const webhookUrl2 = 'https://n8nwebhook.arck1pro.shop/webhook/simulador-rd-mkt';
 
-        // Prepara as opções da requisição
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(dados)
         };
 
-        // Cria as duas promessas de envio
         const promise1 = fetch(webhookUrl1, requestOptions);
         const promise2 = fetch(webhookUrl2, requestOptions);
 
-        // Executa as duas promessas em paralelo e aguarda a conclusão de ambas
         const results = await Promise.allSettled([promise1, promise2]);
 
-        // Verifica se pelo menos uma das requisições teve sucesso
         const success = results.some(result => result.status === 'fulfilled' && result.value.ok);
 
         if (success) {
             alert('Proposta enviada com sucesso!');
         } else {
-            // Se ambas falharem, exibe uma mensagem de erro genérica
             alert('Erro ao enviar proposta. Tente novamente.');
             console.error("Ambos os webhooks falharam.", results);
         }
-
-        // --- FIM DA ALTERAÇÃO ---
 
     } catch (error) {
         console.error('Erro geral ao enviar proposta:', error);
