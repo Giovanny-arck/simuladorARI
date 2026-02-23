@@ -29,12 +29,12 @@ body {
     background: #fafafa;
 }
 
-/* Layout de 3 Colunas no Desktop */
+/* Layout de 2 Colunas no Desktop */
 @media (min-width: 1024px) {
     .grid-investimento {
         display: grid;
-        grid-template-columns: 1.2fr 1.5fr 1.5fr; /* Proporção ajustada */
-        gap: 25px;
+        grid-template-columns: 1fr 2fr;
+        gap: 30px;
         align-items: start;
     }
 }
@@ -73,10 +73,10 @@ label {
 .button-group-tooltips {
     display: flex;
     gap: 10px;
-    width: 100%; /* Garante que o grupo ocupe toda a largura disponível */
+    width: 100%;
 }
 
-/* Espaçamento específico para os botões de prazo */
+/* Espaçamento para os botões de prazo */
 #selecao-prazo .button-group {
     display: flex;
     flex-direction: column;
@@ -91,27 +91,26 @@ label {
 
 .btn-wrapper {
     position: relative;
-    flex: 1 1 0; /* FORÇA a divisão igualitária do espaço entre os botões */
+    flex: 1 1 0;
     display: flex;
     align-items: center;
-    min-width: 0; /* Evita que o botão mude de tamanho por causa do texto */
+    min-width: 0;
 }
 
 /* Padronização dos Botões */
 .recebimento-btn, 
-.garantia-btn, 
 .prazo-btn {
     width: 100%;
     background: #071F3A;
     color: #ffffff;
-    padding: 12px 35px 12px 10px; /* Padding ajustado para o ícone fixo na direita */
+    padding: 12px 35px 12px 10px;
     font-size: 14px;
     font-weight: 600;
     border: 2px solid transparent;
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.2s ease;
-    min-height: 55px; /* Altura mínima padronizada para todos */
+    min-height: 55px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -121,7 +120,6 @@ label {
 
 /* Estado Selecionado (Cinza) */
 .recebimento-btn.selected, 
-.garantia-btn.selected, 
 .prazo-btn.selected {
     background-color: #555555 !important; 
     color: white !important;
@@ -129,8 +127,7 @@ label {
     transform: scale(0.98);
 }
 
-.recebimento-btn:hover:not(.selected),
-.garantia-btn:hover:not(.selected) {
+.recebimento-btn:hover:not(.selected) {
     background-color: #0d2f57;
 }
 

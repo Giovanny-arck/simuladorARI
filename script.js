@@ -14,7 +14,6 @@ const taxaAdicionalFinal = 0.005;
 
 // Variáveis de estado
 let formaSelecionada = 'final'; 
-let garantiaSelecionada = 'futuros'; // Padrão solicitado: Imóveis Futuros
 let prazoSelecionado = null;
 let valorInvestido = 0;
 
@@ -65,9 +64,7 @@ function resetarTabelaParaPlaceholders() {
 
 // --- INICIALIZAÇÃO E EVENTOS ---
 document.addEventListener('DOMContentLoaded', function() {
-    // Inicializa os botões padrões com a cor cinza (selected)
     document.getElementById('btn-final').classList.add('selected');
-    document.getElementById('btn-futuros').classList.add('selected');
 
     const valorInput = document.getElementById('valor');
     valorInput.addEventListener('focus', () => {
@@ -102,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// --- FUNÇÕES DE SELEÇÃO E ESTILOS ---
+// --- FUNÇÕES DE SELEÇÃO ---
 
 function selecionarForma(forma) {
     formaSelecionada = forma;
@@ -113,16 +110,6 @@ function selecionarForma(forma) {
         calcular();
     } else {
         resetarTabelaParaPlaceholders();
-    }
-}
-
-function selecionarGarantia(tipo) {
-    garantiaSelecionada = tipo;
-    document.querySelectorAll('.garantia-btn').forEach(btn => btn.classList.remove('selected'));
-    document.getElementById(`btn-${tipo}`).classList.add('selected');
-    
-    if (valorInvestido >= 20000) {
-        calcular();
     }
 }
 
@@ -162,8 +149,8 @@ function calcular() {
     let thead = document.getElementById('resultado-head');
     tbody.innerHTML = "";
     
-    // Regra de Garantia: subtrai 0.5% (0.005) se for "escriturados"
-    const redutorGarantia = (garantiaSelecionada === 'escriturados') ? 0.005 : 0;
+    // Desconto fixo de 0.5% (0.005) conforme mudança de plano
+    const redutorAutomatico = 0.005;
 
     if (formaSelecionada === 'mensal') {
         thead.innerHTML = `<tr><th>Prazo</th><th>Rendimento Mensal (R$)</th><th>Retorno no Fim do Contrato</th><th>Retorno Total</th><th>Taxa Efetiva a.m.</th></tr>`;
@@ -171,8 +158,8 @@ function calcular() {
             const taxaBase = taxaPrazo[prazo].mensal;
             let taxaAdicional = (valorInvestido >= 100000) ? obterTaxaExtraPorValor(valorInvestido) : 0;
             
-            // Taxa Total com redutor de garantia aplicado
-            const taxaTotal = (taxaBase + taxaAdicional) - redutorGarantia;
+            // Taxa Total com redutor aplicado automaticamente
+            const taxaTotal = (taxaBase + taxaAdicional) - redutorAutomatico;
             
             const rendimentoMensal = valorInvestido * taxaTotal;
             const retornoTotal = valorInvestido + (rendimentoMensal * prazo);
@@ -193,8 +180,8 @@ function calcular() {
             const taxaBase = taxaPrazo[prazo].final;
             const taxaExtraValor = obterTaxaExtraPorValor(valorInvestido);
             
-            // Taxa Total com redutor de garantia aplicado
-            const taxaTotal = (taxaBase + taxaAdicionalFinal + taxaExtraValor) - redutorGarantia;
+            // Taxa Total com redutor aplicado automaticamente
+            const taxaTotal = (taxaBase + taxaAdicionalFinal + taxaExtraValor) - redutorAutomatico;
             
             const jurosTotais = (valorInvestido * taxaTotal) * prazo;
             const retornoTotal = valorInvestido + jurosTotais;
@@ -282,7 +269,6 @@ async function enviarProposta() {
             contato: contatoFormatado,
             valor: valorInvestido,
             forma: formaSelecionada,
-            garantia: garantiaSelecionada,
             prazo: prazoSelecionado,
             timestamp: new Date().toISOString()
         };
